@@ -37,7 +37,7 @@ jobs:
           # - bullseye-ppc64el
           # - fedora37-aarch64
           # - fedora37-x86_64
-          - focal-ppc64el
+          # - focal-ppc64el
           - focal-amd64
           # - jammy-amd64
           # - jammy-arm64
