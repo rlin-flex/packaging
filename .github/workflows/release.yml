@@ -63,8 +63,7 @@ jobs:
           submodules: true
           ref: ${{ github.event.inputs.wkhtmltopdf_ref }}
       - name: build
-        run: |
-          cd packaging && python3 ./build package-docker --clean --iteration ${{ github.event.inputs.packaging_iteration }} ${{ matrix.package_target }} ../wkhtmltopdf
+        run: cd packaging && python3 ./build package-docker --clean --iteration ${{ github.event.inputs.packaging_iteration }} ${{ matrix.package_target }} ../wkhtmltopdf
       - uses: softprops/action-gh-release@v2
         with:
           name: ${{ github.event.inputs.packaging_release }}
