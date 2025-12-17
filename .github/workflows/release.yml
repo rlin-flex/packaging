@@ -15,34 +15,36 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         package_target:
-          - almalinux8-aarch64
-          - almalinux8-ppc64le
-          - almalinux8-x86_64
-          - almalinux9-aarch64
-          - almalinux9-ppc64le
-          - almalinux9-x86_64
-          - bionic-ppc64el
-          - bookworm-amd64
-          - bookworm-arm64
-          - bookworm-i386
-          - bookworm-ppc64el
-          - buster-ppc64el
-          - bullseye-amd64
-          - bullseye-arm64
-          - bullseye-i386
-          - bullseye-ppc64el
-          - fedora37-aarch64
-          - fedora37-x86_64
-          - focal-ppc64el
+          # - almalinux8-aarch64
+          # - almalinux8-ppc64le
+          # - almalinux8-x86_64
+          # - almalinux9-aarch64
+          # - almalinux9-ppc64le
+          # - almalinux9-x86_64
+          # - bionic-ppc64el
+          # - bookworm-amd64
+          # - bookworm-arm64
+          # - bookworm-i386
+          # - bookworm-ppc64el
+          # - buster-ppc64el
+          # - bullseye-amd64
+          # - bullseye-arm64
+          # - bullseye-i386
+          # - bullseye-ppc64el
+          # - fedora37-aarch64
+          # - fedora37-x86_64
+          # - focal-ppc64el
+          - focal-amd64
+          - focal-arm64
           - jammy-amd64
           - jammy-arm64
-          - jammy-ppc64el
-          - raspberrypi.bookworm-armhf
-          - raspberrypi.bullseye-armhf
+          # - jammy-ppc64el
+          # - raspberrypi.bookworm-armhf
+          # - raspberrypi.bullseye-armhf
       fail-fast: false
     steps:
       - name: configure docker
@@ -62,7 +64,7 @@ jobs:
           ref: ${{ github.event.inputs.wkhtmltopdf_ref }}
       - name: build
         run: cd packaging && python3 ./build package-docker --clean --iteration ${{ github.event.inputs.packaging_iteration }} ${{ matrix.package_target }} ../wkhtmltopdf
-      - uses: softprops/action-gh-release@v0.1.14
+      - uses: softprops/action-gh-release@v2
         with:
           name: ${{ github.event.inputs.packaging_release }}
           tag_name: ${{ github.event.inputs.packaging_release }}-${{ github.event.inputs.packaging_iteration }}
