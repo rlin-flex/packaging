@@ -39,9 +39,9 @@ jobs:
           # - fedora37-x86_64
           # - focal-ppc64el
           - focal-amd64
-          - focal-arm64
-          - jammy-amd64
-          - jammy-arm64
+          # - focal-arm64
+          # - jammy-amd64
+          # - jammy-arm64
           # - jammy-ppc64el
           # - raspberrypi.bookworm-armhf
           # - raspberrypi.bullseye-armhf
@@ -69,7 +69,9 @@ jobs:
           name: ${{ github.event.inputs.packaging_release }}
           tag_name: ${{ github.event.inputs.packaging_release }}-${{ github.event.inputs.packaging_iteration }}
           target_commitish: ${{ github.sha }}
-          files: "packaging/targets/wkhtmltox*.*"
+          files: |
+            "packaging/targets/wkhtmltox*.*"
+            "packaging/targets/focal-amd64/wkhtmltox/bin/wkhtmltopdf"
           fail_on_unmatched_files: false
           draft: true
           body: All packages were built and uploaded automatically as a part of [this run](${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}), using this [wkhtmltopdf branch/tag](https://github.com/wkhtmltopdf/wkhtmltopdf/tree/${{ github.event.inputs.wkhtmltopdf_ref }}).
