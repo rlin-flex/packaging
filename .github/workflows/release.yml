@@ -39,8 +39,9 @@ jobs:
           # - fedora37-x86_64
           # - focal-ppc64el
           - focal-amd64
-          # - jammy-amd64
-          # - jammy-arm64
+          - focal-arm64
+          - jammy-amd64
+          - jammy-arm64
           # - jammy-ppc64el
           # - raspberrypi.bookworm-armhf
           # - raspberrypi.bullseye-armhf
